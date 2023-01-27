@@ -41,9 +41,9 @@ def add_tratamiento():
             sintoma = request.json['sintoma']
             diagnostico = request.json['diagnostico']
             fecha = request.json['fecha']
-            id_paciente = request.json['id_paciente']
-            id_medico = request.json['id_medico']
-            tratamiento=Tratamiento(str(id), sintoma, diagnostico, fecha, id_paciente, id_medico)
+            fk_paciente = request.json['fk_paciente']
+            fk_medico = request.json['fk_medico']
+            tratamiento=Tratamiento(str(id), sintoma, diagnostico, fecha, fk_paciente, fk_medico)
 
             affected_rows= TratamietoModel.add_tratamiento(tratamiento)
 
@@ -65,9 +65,9 @@ def update_tratamiento(id):
             sintoma = request.json['sintoma']
             diagnostico = request.json['diagnostico']
             fecha = request.json['fecha']
-            id_paciente = request.json['id_paciente']
-            id_medico = request.json['id_medico']
-            tratamiento=Tratamiento(id, sintoma, diagnostico, fecha, id_paciente, id_medico)
+            fk_paciente = request.json['fk_paciente']
+            fk_medico = request.json['fk_medico']
+            tratamiento=Tratamiento(id, sintoma, diagnostico, fecha, fk_paciente, fk_medico)
 
             affected_rows= TratamietoModel.update_tratamiento(tratamiento)
 

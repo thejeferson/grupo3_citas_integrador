@@ -60,7 +60,7 @@ class TratamietoModel():
            
 
             with connection.cursor() as cursor:
-                cursor.execute("INSERT INTO public.sintoma (id, sintoma, diagnostico, fechas, id_paciente, id_medico) VALUES (%s, %s, %s, %s, %s, %s)",(tratamiento.id, tratamiento.sintoma, tratamiento.diagnostico, tratamiento.fecha, tratamiento.id_paciente, tratamiento.id_medico))
+                cursor.execute("INSERT INTO public.sintoma (id, sintoma, diagnostico, fechas, fk_paciente, fk_medico) VALUES (%s, %s, %s, %s, %s, %s)",(tratamiento.id, tratamiento.sintoma, tratamiento.diagnostico, tratamiento.fecha, tratamiento.fk_paciente, tratamiento.fk_medico))
                 
             affected_rows=cursor.rowcount
             connection.commit()
@@ -78,7 +78,7 @@ class TratamietoModel():
            
 
             with connection.cursor() as cursor:
-                cursor.execute("UPDATE public.sintoma SET sintoma = %s, diagnostico = %s, fechas = %s, id_paciente= %s, id_medico = %s  WHERE id = %s" ,( tratamiento.sintoma, tratamiento.diagnostico, tratamiento.fecha, tratamiento.id_paciente, tratamiento.id_medico, tratamiento.id))
+                cursor.execute("UPDATE public.sintoma SET sintoma = %s, diagnostico = %s, fechas = %s, fk_paciente= %s, fk_medico = %s  WHERE id = %s" ,( tratamiento.sintoma, tratamiento.diagnostico, tratamiento.fecha, tratamiento.fk_paciente, tratamiento.fk_medico, tratamiento.id))
                 
             affected_rows=cursor.rowcount
             connection.commit()
