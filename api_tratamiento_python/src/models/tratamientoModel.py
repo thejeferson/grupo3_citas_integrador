@@ -18,7 +18,7 @@ class TratamietoModel():
 
 
                 for row in resultset:
-                    tratamiento=Tratamiento(row[0],row[1],row[2],row[3],row[4],row[5])
+                    tratamiento=Tratamiento(row[0],row[1],row[2],row[3],row[4],row[5],row[6])
                     tratamientos.append(tratamiento.to_Json())
 
 
@@ -44,7 +44,7 @@ class TratamietoModel():
                 tratamiento = None
                 if row != None:
 
-                    tratamiento = Tratamiento(row[0],row[1],row[2],row[3],row[4],row[5])
+                    tratamiento = Tratamiento(row[0],row[1],row[2],row[3],row[4],row[5],row[6])
                 tratamiento = tratamiento.to_Json()
 
             connection.close()
@@ -61,7 +61,7 @@ class TratamietoModel():
            
 
             with connection.cursor() as cursor:
-                cursor.execute("INSERT INTO tratamiento (id, nombre, descripcion, fecha, id_paciente, id_medico) VALUES (%s, %s, %s, %s,  %s, %s)",(tratamiento.id, tratamiento.nombre, tratamiento.descripcion, tratamiento.fecha,tratamiento.id_paciente, tratamiento.id_medico, ))
+                cursor.execute("INSERT INTO tratamiento (id, nombre, descripcion, fecha, fk_paciente, fk_medico, fk_sintoma) VALUES (%s, %s, %s, %s,  %s, %s, %s)",(tratamiento.id, tratamiento.nombre, tratamiento.descripcion, tratamiento.fecha,tratamiento.fk_paciente, tratamiento.fk_medico, tratamiento.fk_sintoma ))
                 
             affected_rows=cursor.rowcount
             connection.commit()
@@ -79,7 +79,7 @@ class TratamietoModel():
            
 
             with connection.cursor() as cursor:
-                cursor.execute("UPDATE tratamiento SET nombre = %s, descripcion = %s, fecha = %s, id_paciente = %s, id_medico = %s  WHERE id = %s" ,( tratamiento.nombre, tratamiento.descripcion, tratamiento.fecha,tratamiento.id_paciente, tratamiento.id_medico, tratamiento.id,))
+                cursor.execute("UPDATE tratamiento SET nombre = %s, descripcion = %s, fecha = %s, fk_paciente = %s, fk_medico = %s, fk_sintoma = %s  WHERE id = %s" ,( tratamiento.nombre, tratamiento.descripcion, tratamiento.fecha,tratamiento.fk_paciente, tratamiento.fk_medico, tratamiento.fk_sintoma, tratamiento.id,))
                 
             affected_rows=cursor.rowcount
             connection.commit()
